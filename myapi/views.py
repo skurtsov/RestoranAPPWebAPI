@@ -76,7 +76,7 @@ def getorders(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute('SELECT * FROM orders_gyros')
+        cursor.execute('SELECT * FROM orders_'+restoran)
         all_orders = cursor.fetchall()
         i = 0
         response = ""
