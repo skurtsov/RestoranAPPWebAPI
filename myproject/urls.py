@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapi.views import getsku,norder,getorders
+from myapi.views import getsku,norder,getorders,deleteall
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/getsku/',getsku),
     path('api/norder/',norder),
     path('api/getorders/',getorders),
+    path('api/deleteall/',deleteall),
 ]
