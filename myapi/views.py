@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 import psycopg2
 import json
-
+import hashlib
 from django.shortcuts import render
 from django.template import loader
 
@@ -176,6 +176,8 @@ def add(request):
 def getuser(request):
     user = request.GET.get('username')
     password = request.GET.get('password')
+    result = hashlib.md5(password.encode())
+    password = result.hexdigest()
     try:
         # пытаемся подключиться к базе данных
         conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
