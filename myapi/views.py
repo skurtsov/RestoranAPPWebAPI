@@ -173,5 +173,24 @@ def add(request):
     price = request.GET.get('price')
     category = request.GET.get('category')
     return HttpResponse(image)
+def getuser(request):
+    user = request.GET.get('username')
+    password = request.GET.get('password')
+    try:
+        # пытаемся подключиться к базе данных
+        conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+        # получение объекта курсора
+        cursor = conn.cursor()
+        # Получаем список всех пользователей
+        cursor.execute('SELECT token, restoran FROM users WHERE username=' + user+' AND PASSWORD='+password)
+        all_items = cursor.fetchall()
+        return HttpResponse(all_items)
+
+        cursor.close()  # закрываем курсор
+        conn.close()  # закрываем соединение
+
+    except:
+        # в случае сбоя подключения будет выведено сообщение в STDOUT
+        print('Can`t establish connection to database')
 
 
