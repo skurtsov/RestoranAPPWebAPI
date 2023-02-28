@@ -135,7 +135,7 @@ def deleteall(request):
         return HttpResponse('Can`t establish connection to database')
 
 
-def redact_id(request):
+def redactid(request):
     restoran = request.GET.get('restoran')
     id = request.GET.get('id')
     zakaz = request.GET.get('zakaz')

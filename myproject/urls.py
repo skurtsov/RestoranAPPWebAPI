@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapi.views import getsku,norder,getorders,deleteall,getuser,deleteid,redact_id
+from myapi.views import getsku,norder,getorders,deleteall,getuser,deleteid,redactid
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,6 @@ urlpatterns = [
     path('api/getorders/',getorders),
     path('api/deleteall/',deleteall),
     path('api/deleteid/', deleteid),
-    path('api/redactid/', redact_id),
+    path('api/redactid/', redactid),
     path('api/getuser/', getuser),
 ]
