@@ -135,11 +135,11 @@ def deleteall(request):
         return HttpResponse('Can`t establish connection to database')
 
 
-def redact(request):
+def redact_id(request):
+    restoran = request.GET.get('restoran')
+    id = request.GET.get('id')
+    zakaz = request.GET.get('zakaz')
     try:
-        restoran = request.GET.get('restoran')
-        id = request.GET.get('id')
-        zakaz = request.GET.get('zakaz')
         # пытаемся подключиться к базе данных
         conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
         # получение объекта курсора
@@ -150,9 +150,8 @@ def redact(request):
         conn.commit()
         return HttpResponse("OK")
         cursor.close()  # закрываем курсор
-        conn.close()  # закрываем соединение
+        conn.close()
     except:
-        # в случае сбоя подключения будет выведено сообщение в STDOUT
         return HttpResponse('Can`t establish connection to database')
 
 
