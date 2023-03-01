@@ -193,6 +193,6 @@ def getuser(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse('Can`t establish connection to database')
+        return HttpResponse(f'SELECT * FROM users WHERE username={user} AND PASSWORD={password}')
 
 
