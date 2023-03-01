@@ -184,15 +184,16 @@ def getuser(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute(f"SELECT * FROM users WHERE username='{user}' AND PASSWORD='{password}'")
+        cursor.execute(f"SELECT restoran,token FROM users WHERE username='{user}' AND PASSWORD='{password}'")
         all_items = cursor.fetchall()
-        return HttpResponse(all_items)
+        response='{"restoran":'+all_items[0]+',"token":'+all_items[1]}
+        return HttpResponse(response)
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse(f"SELECT * FROM users WHERE username='{user}' AND PASSWORD='{password}'")
+        return HttpResponse(f"SELECT restoran,token FROM users WHERE username='{user}' AND PASSWORD='{password}'")
 
 
