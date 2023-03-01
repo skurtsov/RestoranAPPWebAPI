@@ -84,7 +84,7 @@ def getorders(request):
 
         for x in all_orders:
             response += json.dumps({"stolik": all_orders[i][0], "zakaz": all_orders[i][1], "id": all_orders[i][2],})
-            if i<len(all_orders):
+            if i<len(all_orders)-1:
                 response += ","
             i += 1
         response+="]"
@@ -184,7 +184,7 @@ def getuser(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute('SELECT * FROM users WHERE username=' + user+' AND PASSWORD='+password)
+        cursor.execute(f'SELECT * FROM users WHERE username={user} AND PASSWORD={password}')
         all_items = cursor.fetchall()
         return HttpResponse(all_items)
 
@@ -193,6 +193,6 @@ def getuser(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        print('Can`t establish connection to database')
+        return HttpResponse('Can`t establish connection to database')
 
 
