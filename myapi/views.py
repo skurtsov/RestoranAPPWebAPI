@@ -79,14 +79,14 @@ def getorders(request):
         cursor.execute('SELECT * FROM orders_'+restoran)
         all_orders = cursor.fetchall()
         i = 0
-        response = ""
+        response = "["
         # Формируем Жсон
 
         for x in all_orders:
-            response += json.dumps({"stolik": all_orders[i][0], "zakaz": all_orders[i][1], "id": all_orders[i][2]})
-            response += ";"
+            response += json.dumps({"stolik": all_orders[i][0], "zakaz": all_orders[i][1], "id": all_orders[i][2],})
+            response += ","
             i += 1
-
+        response+="]"
         return HttpResponse(response)
 
         cursor.close()  # закрываем курсор
