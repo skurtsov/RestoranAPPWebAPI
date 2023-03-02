@@ -186,8 +186,8 @@ def getuser(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT restoran,token FROM users WHERE username='{user}' AND PASSWORD='{password}'")
         all_items = cursor.fetchall()
-        response='{"restoran":'+all_items[0]+',"token":'+all_items[1]+'}'
-        return HttpResponse(response)
+        //response='{"restoran":'+all_items[0]+',"token":'+all_items[1]+'}'
+        return HttpResponse(all_items[0])
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
@@ -196,4 +196,29 @@ def getuser(request):
         # в случае сбоя подключения будет выведено сообщение в STDOUT
         return HttpResponse(f"SELECT restoran,token FROM users WHERE username='{user}' AND PASSWORD='{password}'")
 
+
+def newuser(request):
+    try:
+        nombre = request.GET.get('nombre')
+        cafe = request.GET.get('cafe')
+        tel = request.GET.get('tel')
+        email = request.GET.get('mail')
+        ciudad = request.GET.get('ciudad')
+        adress = request.GET.get('adress')
+        camareros = request.GET.get('camareros')
+        mesas = request.GET.get('mesas')
+        # пытаемся подключиться к базе данных
+        conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+        # получение объекта курсора
+        cursor = conn.cursor()
+        # Получаем список всех пользователей
+        sql = f"INSERT INTO users_requests(nombre ,cafe , tel , email , ciudad , adress , camareros , mesas ) VALUES('{nombre}','{cafe}','{tel}','{email}','{ciudad}','{adress}',{camareros},{mesas})"
+        cursor.execute(sql)
+        conn.commit()
+        return HttpResponse("OK")
+        cursor.close()  # закрываем курсор
+        conn.close()  # закрываем соединение
+    except:
+        # в случае сбоя подключения будет выведено сообщение в STDOUT
+        return HttpResponse('Can`t establish connection to database')
 
