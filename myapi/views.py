@@ -186,7 +186,7 @@ def getuser(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT restoran,token FROM users WHERE username='{user}' AND PASSWORD='{password}'")
         all_items = cursor.fetchall()
-        response='{"restoran":'+all_items[0][0]+',"token":'+all_items[0][1]+'}'
+        response='{"restoran":"'+all_items[0][0]+'","token":"'+all_items[0][1]+'"}'
         return HttpResponse(response)
 
         cursor.close()  # закрываем курсор
