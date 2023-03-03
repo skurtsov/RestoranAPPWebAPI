@@ -95,6 +95,31 @@ def getorders(request):
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
         print('Can`t establish connection to database')
+def getordersweb(request):
+    restoran = request.GET.get('restoran')
+
+    try:
+        # пытаемся подключиться к базе данных
+        conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+        # получение объекта курсора
+        cursor = conn.cursor()
+        # Получаем список всех пользователей
+        cursor.execute('SELECT * FROM orders_'+restoran)
+        all_orders = cursor.fetchall()
+        i = 0
+        response=""
+        # Формируем Жсон
+        for x in all_orders:
+            response += json.dumps({"stolik": all_orders[i][0], "zakaz": all_orders[i][1], "id": all_orders[i][2],})
+            response += ";"
+            i += 1
+        return HttpResponse(response)
+
+        cursor.close()  # закрываем курсор
+        conn.close()  # закрываем соединение
+    except:
+        # в случае сбоя подключения будет выведено сообщение в STDOUT
+        print('Can`t establish connection to database')
 
 
 def deleteid(request):
