@@ -247,3 +247,6 @@ def newuser(request):
         # в случае сбоя подключения будет выведено сообщение в STDOUT
         return HttpResponse('Can`t establish connection to database')
 
+def addform(request):
+    restoran = request.GET.get('restoran')
+    return render(request, 'main/addform.html', {"test":restoran})
