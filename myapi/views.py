@@ -249,7 +249,7 @@ def newuser(request):
 
 def addform(request):
     restoran = request.GET.get('restoran')
-    return render(request, 'main/addform.html', {"test":restoran})
+    return render(request, 'main/addform.html', {"rest":restoran})
 def add(request):
     restoran = request.GET.get('restoran')
     image = request.GET.get('image')
