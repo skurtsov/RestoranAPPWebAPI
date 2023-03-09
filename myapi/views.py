@@ -258,5 +258,5 @@ def add(request):
     desc = request.GET.get('desc')
     desc_en = request.GET.get('desc_en')
     price = request.GET.get('price')
-    category = request.GET.get('category')
+    category = request.GET.get('cat')
     return HttpResponse(str(restoran) + str(image)+str(name)+str(name_en)+str(desc)+str(desc_en)+str(price)+str(category))
