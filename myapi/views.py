@@ -250,3 +250,13 @@ def newuser(request):
 def addform(request):
     restoran = request.GET.get('restoran')
     return render(request, 'main/addform.html', {"test":restoran})
+def add(request):
+    restoran = request.GET.get('restoran')
+    image = request.GET.get('image')
+    name = request.GET.get('name')
+    name_en = request.GET.get('name_en')
+    desc = request.GET.get('desc')
+    desc_en = request.GET.get('desc_en')
+    price = request.GET.get('price')
+    category = request.GET.get('category')
+    return HttpResponse(restoran + image+name+name_en+desc+desc_en+price+category)
