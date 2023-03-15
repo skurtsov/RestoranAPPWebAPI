@@ -4,7 +4,8 @@ import json
 import hashlib
 from django.shortcuts import render
 from django.template import loader
-
+from .forms import ResumeForm
+import os
 
 # Create your views here.
 # visitor menu
@@ -248,15 +249,22 @@ def newuser(request):
         return HttpResponse('Can`t establish connection to database')
 
 def addform(request):
-    restoran = request.GET.get('restoran')
-    return render(request, 'main/addform.html', {"rest":restoran})
+    if request.method == 'POST':
+        restoran = request.GET.get('restoran')
+        form = ResumeForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES.get('file')
+            name = request.POST['name']
+            if(os.path.exists(f"files/{restoran}")!=True):
+                os.mkdir(f"files/{restoran}")
+            filename = os.path.join(f'files/{restoran}', file.name)
+            with open(filename, 'wb') as f:
+                f.write(file.read())
+
+            return HttpResponse(name)
+    else:
+        form = ResumeForm
+    return render(request, 'main/addform.html', {'form': form})
 def add(request):
-    restoran = request.GET.get('restoran')
-    image = request.GET.get('image')
-    name = request.GET.get('name')
-    name_en = request.GET.get('name_en')
-    desc = request.GET.get('desc')
-    desc_en = request.GET.get('desc_en')
-    price = request.GET.get('price')
-    category = request.GET.get('cat')
-    return HttpResponse(str(restoran) + str(image)+str(name)+str(name_en)+str(desc)+str(desc_en)+str(price)+str(category))
+    name = request.POST['ff']
+    return  HttpResponse(name)
