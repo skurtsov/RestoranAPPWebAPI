@@ -258,7 +258,7 @@ def addform(request):
             if(os.path.exists(f"files/{restoran}")!=True):
                 os.mkdir(f"files/{restoran}")
             filename = os.path.join(f'files/{restoran}', file.name)
-            with open(filename, 'wb') as f:
+            with os.open(filename, 'wb') as f:
                 f.write(file.read())
 
             return HttpResponse(name)
