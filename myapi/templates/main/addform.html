@@ -1,19 +1,7 @@
-<form action="/manager/add" method="get">
-    <input type="text" name="restoran" value="{{test}}" id="" style="display: none;">
-    <p> URL  </p>
-    <input type="text" name="image" value="" id="" >
-      <input type="text" name="restoran" value="{{rest}}" style="display:none" id="" >
-    <p> name  </p>
-    <input type="text" name="name" value="" id="" >
-    <p> name en </p>
-    <input type="text" name="name_en" value="" id="">
-    <p> desc </p>
-    <input type="text" name="desc" value="" id="">
-    <p> desc en </p>
-    <input type="text" name="desc_en" value="" id="">
-    <p> price </p>
-    <input type="text" name="price" value="" id="">
-    <p> category </p>
-    <input type="text" name="cat" value="" id="">
-    <input type="submit" value="Ok">
+{% block content %}
+<form method = "post", enctype="multipart/form-data">
+   {% csrf_token %}
+   {{ form.as_p }}
+   <button type="submit"> Submit</button>
 </form>
+{% endblock %}
