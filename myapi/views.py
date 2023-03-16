@@ -255,9 +255,9 @@ def addform(request):
         if form.is_valid():
             file = request.FILES.get('file')
             name = request.POST['name']
-            if(os.path.exists(f"files/{restoran}")!=True):
-                os.makedirs(f"files/{restoran}")
-            filename = os.path.join(f'files/{restoran}', file.name)
+            if(os.path.exists(f"media/{restoran}")!=True):
+                os.makedirs(f"media/{restoran}")
+            filename = os.path.join(f'media/{restoran}', file.name)
             with open(filename, 'wb') as f:
                 f.write(file.read())
 
