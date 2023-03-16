@@ -261,7 +261,7 @@ def addform(request):
             with open(filename, 'wb') as f:
                 f.write(file.read())
 
-            return HttpResponse(name)
+            return HttpResponse(f"https://reactive-cafe.com/media/{restoran}/{file.name}")
     else:
         form = ResumeForm
     return render(request, 'main/addform.html', {'form': form})
