@@ -265,7 +265,7 @@ def addform(request):
             desc = request.POST['desc']
             desc_en = request.POST['desc_en']
             price = request.POST['price']
-            cat = request.POST['cat']
+            cat = request.POST['category']
             link= f"https://reactive-cafe.com/media/{restoran}/{file.name}"
             return HttpResponse(f"{restoran},{name},{name_en},{desc},{desc_en},{price},{cat},{link}")
     else:
