@@ -284,21 +284,3 @@ def addform(request):
 def add(request):
     name = request.POST['ff']
     return  HttpResponse(name)
-def newclient(request):
-    try:
-        restoran = request.GET.get('restoran')
-        # пытаемся подключиться к базе данных
-        conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
-        # получение объекта курсора
-        cursor = conn.cursor()
-        # Получаем список всех пользователей
-        sql = f"CREATE TABLE sku_{restoran}(image varchar(255),name varchar(255),name_en varchar(255),name_fr varchar(255),name_de varchar(255),name_cat varchar(255),descr varchar(255),descr_en varchar(255),descr_fr varchar(255),descr_de varchar(255),descr_cat varchar(255),price int,cat varchar(255),isactive boolean,id SERIAL NOT NULL ); CREATE TABLE orders_{restoran}(stolik int,zakaz varchar(255),id SERIAL NOT NULL ); CREATE TABLE history_{restoran}(stolik int,zakaz varchar(255),id SERIAL NOT NULL );"
-        cursor.execute(sql)
-        conn.commit()
-        return HttpResponse("OK")
-        cursor.close()  # закрываем курсор
-        conn.close()  # закрываем соединение
-    except:
-        # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse('Can`t establish connection to database')
-
