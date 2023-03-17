@@ -260,12 +260,12 @@ def addform(request):
             filename = os.path.join(f'media/{restoran}', file.name)
             with open(filename, 'wb') as f:
                 f.write(file.read())
-            name = request.POST('name')
-            name_en = request.POST('name_en')
-            desc = request.POST('desc')
-            desc_en = request.POST('desc_en')
-            price = request.POST('price')
-            cat = request.POST('cat')
+            name = request.POST['name']
+            name_en = request.POST['name_en']
+            desc = request.POST['desc']
+            desc_en = request.POST['desc_en']
+            price = request.POST['price']
+            cat = request.POST['cat']
             link= f"https://reactive-cafe.com/media/{restoran}/{file.name}"
             return HttpResponse(f"{restoran},{name},{name_en},{desc},{desc_en},{price},{cat},{link}")
     else:
