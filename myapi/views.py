@@ -284,3 +284,5 @@ def addform(request):
 def add(request):
     name = request.POST['ff']
     return  HttpResponse(name)
+def website(request):
+    return render(request, 'main/index.html')

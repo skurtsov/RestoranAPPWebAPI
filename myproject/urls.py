@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from myapi.views import getsku, norder, getorders, deleteall, getuser, deleteid, redactid, newuser, getordersweb, \
-    addform, add
+    addform, add,website
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,4 +33,5 @@ urlpatterns = [
     path('api/newuser/', newuser),
     path('manager/add/', add),
     path("manager/addform/", addform, name="addform"),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("/", website, name="website"),
+              ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
