@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Resume(models.Model):
-    name = models.CharField(max_length= 255, blank=False, null=False)
+    name = models.CharField(max_length= 255, blank=False, null=False, widget=models.TextInput(attrs={'class': 'my-class'}))
     name_en = models.CharField(max_length=255, blank=False, null=False)
     desc = models.CharField(max_length=255, blank=False, null=False)
     desc_en = models.CharField(max_length=255, blank=False, null=False)
