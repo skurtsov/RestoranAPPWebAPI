@@ -280,7 +280,7 @@ def addform(request):
             return HttpResponse(sql)
     else:
         form = ResumeForm
-    return render(request, 'main/addform.html', {'form': form})
+    return render(request, 'main/addform.html', {'form': form, 'test':'parapa'})
 def add(request):
     name = request.POST['ff']
     return  HttpResponse(name)
