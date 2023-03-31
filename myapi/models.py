@@ -9,6 +9,8 @@ class Resume(models.Model):
     price = models.CharField(max_length=255, blank=False, null=False)
     category = models.CharField(max_length=255, blank=False, null=False)
     file = models.FileField(upload_to= 'files/',null=True)
+    name.widget.attrs.update({'foo':'bar'})
+
 
     def __repr__(self):
         return 'Resume(%s, %s)' % (self.name, self.file)
