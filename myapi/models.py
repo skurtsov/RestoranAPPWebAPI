@@ -2,14 +2,13 @@ from django.db import models
 
 # Create your models here.
 class Resume(models.Model):
-    name = models.CharField(max_length= 255, blank=False, null=False)
+    name = models.CharField(max_length= 255, blank=False, null=False, attrs={'class': "input-lg"})
     name_en = models.CharField(max_length=255, blank=False, null=False)
     desc = models.CharField(max_length=255, blank=False, null=False)
     desc_en = models.CharField(max_length=255, blank=False, null=False)
     price = models.CharField(max_length=255, blank=False, null=False)
     category = models.CharField(max_length=255, blank=False, null=False)
     file = models.FileField(upload_to= 'files/',null=True)
-    name.widget.attrs.update({'foo':'bar'})
 
 
     def __repr__(self):
