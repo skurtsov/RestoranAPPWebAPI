@@ -1,5 +1,13 @@
 {% block content %}
-<h1>{{ test }}</h1>
+<ul>
+   <li>{{name}}</li>
+   <li>{{name_en}}</li>
+   <li>{{desc}}</li>
+   <li>{{desc_en}}</li>
+   <li>{{price}}</li>
+   <li>{{category}}</li>
+
+</ul>
 <form method = "post", enctype="multipart/form-data">
    {% csrf_token %}
    {{ form.as_p }}
