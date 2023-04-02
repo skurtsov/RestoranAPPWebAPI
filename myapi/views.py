@@ -283,7 +283,7 @@ def addform(request):
     return render(request, 'main/addform.html', {'form': form, 'test':'parapa'})
 def getskuid(request):
     restoran = request.GET.get('restoran')
-    id = request.GET.get('restoran')
+    id = request.GET.get('id')
     try:
         # пытаемся подключиться к базе данных
         conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
