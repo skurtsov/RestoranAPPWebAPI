@@ -316,7 +316,8 @@ def getskuid(request):
                 price = request.POST['price']
                 cat = request.POST['category']
                 link = f"https://reactive-cafe.com/media/{restoran}/{file.name}"
-                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_en}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_en}',{price},'{cat}',TRUE)"
+                sql = f"UPDATE sku_{restoran} SET image ={link} WHERE id={id}"
+                #sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_en}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_en}',{price},'{cat}',TRUE)"
                 conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
                 # получение объекта курсора
                 cursor = conn.cursor()
@@ -329,7 +330,7 @@ def getskuid(request):
                 return HttpResponse(sql)
         else:
             form = ResumeForm
-        return render(request, 'main/addform.html', {'form': form, 'name': all_items[0][1],'name_en': all_items[0][2],'desc': all_items[0][3],'desc_en': all_items[0][4],'price': all_items[0][11],'category': all_items[0][12],})
+        return render(request, 'main/redactform.html', {'form': form, 'name': all_items[0][1],'name_en': all_items[0][2],'desc': all_items[0][3],'desc_en': all_items[0][4],'price': all_items[0][11],'category': all_items[0][12],})
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
