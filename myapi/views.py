@@ -301,7 +301,7 @@ def getskuid(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse('Can`t establish connection to database')
+        return HttpResponse(f'SELECT * FROM sku_{restoran} WHERE id={id}')
 
 
 def add(request):
