@@ -334,7 +334,7 @@ def getskuid(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse(f'SELECT * FROM sku_{restoran} WHERE id={id}')
+        return HttpResponse(f"UPDATE sku_{restoran} SET image ={link} WHERE id={id}")
 
 
 def add(request):
