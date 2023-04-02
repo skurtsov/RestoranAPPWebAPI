@@ -281,7 +281,7 @@ def addform(request):
     else:
         form = ResumeForm
     return render(request, 'main/addform.html', {'form': form, 'test':'parapa'})
-def getskuid(request):
+def redactbyid(request):
     restoran = request.GET.get('restoran')
     id = request.GET.get('id')
     try:

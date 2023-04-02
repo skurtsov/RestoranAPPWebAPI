@@ -18,12 +18,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from myapi.views import getsku, norder, getorders, deleteall, getuser, deleteid, redactid, newuser, getordersweb, \
-    addform, add,website,getskuid
+    addform, add,website,redactbyid
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/getsku/',getsku),
-    path('api/getskuid/',getskuid),
+    path('api/redactbyid/',redactbyid),
     path('api/norder/',norder),
     path('api/getorders/',getorders),
     path('api/getordersweb/',getordersweb),
