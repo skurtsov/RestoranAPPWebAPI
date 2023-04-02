@@ -329,8 +329,7 @@ def getskuid(request):
                 return HttpResponse(sql)
         else:
             form = ResumeForm
-        myname= all_items[1]
-        return render(request, 'main/addform.html', {'form': form, 'name': myname})
+        return render(request, 'main/addform.html', {'form': form, 'name': type(all_items)})
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
