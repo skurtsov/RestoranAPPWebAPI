@@ -4,8 +4,10 @@ from django.db import models
 class Resume(models.Model):
     name = models.CharField(max_length= 255, blank=False, null=False)
     name_en = models.CharField(max_length=255, blank=False, null=False)
+    name_cat = models.CharField(max_length=255, blank=False, null=False)
     desc = models.CharField(max_length=255, blank=False, null=False)
     desc_en = models.CharField(max_length=255, blank=False, null=False)
+    desc_cat = models.CharField(max_length=255, blank=False, null=False)
     price = models.CharField(max_length=255, blank=False, null=False)
     category = models.CharField(max_length=255, blank=False, null=False)
     file = models.FileField(upload_to= 'files/',null=True)
