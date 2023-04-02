@@ -303,7 +303,7 @@ def redactbyid(request):
             form = ResumeForm(request.POST, request.FILES)
             if form.is_valid():
                 file = request.FILES.get('file')
-                if(file != None);
+                if(file != None):
                     name = request.POST['name']
                     if (os.path.exists(f"media/{restoran}") != True):
                         os.makedirs(f"media/{restoran}")
@@ -331,7 +331,7 @@ def redactbyid(request):
                     cursor.close()  # закрываем курсор
                     conn.close()  # закрываем соединение
                     return HttpResponse("Not None")
-            else:
+                 else:
                     return HttpResponse("None")
         else:
             form = ResumeForm
