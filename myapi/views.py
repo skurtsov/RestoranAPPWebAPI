@@ -311,8 +311,10 @@ def redactbyid(request):
                     f.write(file.read())
                 name = request.POST['name']
                 name_en = request.POST['name_en']
+                name_en = request.POST['name_cat']
                 desc = request.POST['desc']
                 desc_en = request.POST['desc_en']
+                desc_cat = request.POST['desc_cat']
                 price = request.POST['price']
                 cat = request.POST['category']
                 link = f"https://reactive-cafe.com/media/{restoran}/{file.name}"
@@ -324,7 +326,7 @@ def redactbyid(request):
                 # Получаем список всех пользователей
                 cursor.execute(sql)
                 conn.commit()
-                return HttpResponse("OK")
+                return HttpResponse(link)
                 cursor.close()  # закрываем курсор
                 conn.close()  # закрываем соединение
                 return HttpResponse(sql)
