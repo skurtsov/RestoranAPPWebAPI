@@ -20,7 +20,7 @@ def getsku(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute('SELECT * FROM sku_' + restoran)
+        cursor.execute('SELECT * FROM sku_' + restoran+' ORDER BY id')
         all_items = cursor.fetchall()
         i = 0
         response = ""
