@@ -317,27 +317,27 @@ def redactbyid(request):
                 desc_cat = request.POST['desc_cat']
                 price = request.POST['price']
                 cat = request.POST['category']
-                if(link != null):
-                    link = f"https://reactive-cafe.com/media/{restoran}/{file.name}"
-                    sql = f"UPDATE sku_{restoran} SET image ='{link}' WHERE id={id}"
-                    #sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_en}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_en}',{price},'{cat}',TRUE)"
-                    conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
-                    # получение объекта курсора
-                    cursor = conn.cursor()
-                    # Получаем список всех пользователей
-                    cursor.execute(sql)
-                    conn.commit()
+
+                link = f"https://reactive-cafe.com/media/{restoran}/{file.name}"
+                sql = f"UPDATE sku_{restoran} SET image ='{link}' WHERE id={id}"
+                #sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_en}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_en}',{price},'{cat}',TRUE)"
+                conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+                # получение объекта курсора
+                cursor = conn.cursor()
+                # Получаем список всех пользователей
+                cursor.execute(sql)
+                conn.commit()
 
                 cursor.close()  # закрываем курсор
                 conn.close()  # закрываем соединение
-                return HttpResponse("Null")
+                return HttpResponse(link)
         else:
             form = ResumeForm
         return render(request, 'main/redactform.html', {'form': form, 'name': all_items[0][1],'name_en': all_items[0][2],'name_cat':all_items[0][5],'desc': all_items[0][3],'desc_en': all_items[0][4],'desc_cat': all_items[0][10],'price': all_items[0][11],'category': all_items[0][12],})
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse("Not working")
+        return HttpResponse(f"UPDATE sku_{restoran} SET image ={link} WHERE id={id}")
 
 
 def add(request):
