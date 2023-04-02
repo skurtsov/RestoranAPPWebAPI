@@ -290,7 +290,7 @@ def getskuid(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute('SELECT * FROM sku_' + restoran+' WHERE id='+id )
+        cursor.execute(f'SELECT * FROM sku_{restoran} WHERE id={id}' )
         all_items = cursor.fetchall()
 
 
@@ -301,7 +301,7 @@ def getskuid(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        print('Can`t establish connection to database')
+        return HttpResponse('Can`t establish connection to database')
 
 
 def add(request):
