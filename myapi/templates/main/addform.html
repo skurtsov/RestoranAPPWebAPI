@@ -1,15 +1,5 @@
 {% block content %}
-<ul>
-   <li>{{name}}</li>
-   <li>{{name_en}}</li>
-   <li>name cat: {{name_en}}</li>
-   <li>{{desc}}</li>
-   <li>{{desc_en}}</li>
-     <li>cat: {{desc_cat}}</li>
-   <li>{{price}}</li>
-   <li>{{category}}</li>
 
-</ul>
 <form method = "post", enctype="multipart/form-data">
    {% csrf_token %}
    {{ form.as_p }}

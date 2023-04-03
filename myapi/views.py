@@ -255,29 +255,54 @@ def addform(request):
         if form.is_valid():
             file = request.FILES.get('file')
             name = request.POST['name']
-            if(os.path.exists(f"media/{restoran}")!=True):
-                os.makedirs(f"media/{restoran}")
-            filename = os.path.join(f'media/{restoran}', file.name)
-            with open(filename, 'wb') as f:
-                f.write(file.read())
-            name = request.POST['name']
-            name_en = request.POST['name_en']
-            desc = request.POST['desc']
-            desc_en = request.POST['desc_en']
-            price = request.POST['price']
-            cat = request.POST['category']
-            link= f"https://reactive-cafe.com/media/{restoran}/{file.name}"
-            sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_en}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_en}',{price},'{cat}',TRUE)"
-            conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
-            # получение объекта курсора
-            cursor = conn.cursor()
-            # Получаем список всех пользователей
-            cursor.execute(sql)
-            conn.commit()
-            return HttpResponse("OK")
-            cursor.close()  # закрываем курсор
-            conn.close()  # закрываем соединение
-            return HttpResponse(sql)
+            if file != None:
+                if(os.path.exists(f"media/{restoran}")!=True):
+                    os.makedirs(f"media/{restoran}")
+                filename = os.path.join(f'media/{restoran}', file.name)
+                with open(filename, 'wb') as f:
+                    f.write(file.read())
+                name = request.POST['name']
+                name_en = request.POST['name_en']
+                name_cat = request.POST['name_cat']
+                desc = request.POST['desc']
+                desc_en = request.POST['desc_en']
+                desc_cat = request.POST['desc_cat']
+                price = request.POST['price']
+                cat = request.POST['category']
+                link= f"https://reactive-cafe.com/media/{restoran}/{file.name}"
+                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_cat}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_cat}',{price},'{cat}',TRUE)"
+                conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+                # получение объекта курсора
+                cursor = conn.cursor()
+                # Получаем список всех пользователей
+                cursor.execute(sql)
+                conn.commit()
+                return HttpResponse("OK")
+                cursor.close()  # закрываем курсор
+                conn.close()  # закрываем соединение
+                return HttpResponse(sql)
+            else:
+
+                name = request.POST['name']
+                name_en = request.POST['name_en']
+                name_cat = request.POST['name_cat']
+                desc = request.POST['desc']
+                desc_en = request.POST['desc_en']
+                desc_cat = request.POST['desc_cat']
+                price = request.POST['price']
+                cat = request.POST['category']
+
+                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('','{name}','{name_en}','{name_en}','{name_en}','{name_cat}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_cat}',{price},'{cat}',TRUE)"
+                conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+                # получение объекта курсора
+                cursor = conn.cursor()
+                # Получаем список всех пользователей
+                cursor.execute(sql)
+                conn.commit()
+                return HttpResponse("OK")
+                cursor.close()  # закрываем курсор
+                conn.close()  # закрываем соединение
+                return HttpResponse(sql)
     else:
         form = ResumeForm
     return render(request, 'main/addform.html', {'form': form, 'test':'parapa'})
