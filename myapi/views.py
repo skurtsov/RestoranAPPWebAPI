@@ -31,12 +31,12 @@ def getsku(request):
                                     "name_fr": all_items[i][3], "desc": all_items[i][4], "desc_en": all_items[i][5],
                                     "desc_fr": all_items[i][6], "price": str(all_items[i][11]),
                                     "id": str(all_items[i][13])})
-            if i != len(all_items) - 1:
+            if (i != len(all_items) - 1):
                 response += ','
                 i += 1
 
         response += '],"orders":[0],"orders_loc":[0],"ordersServer":[]}'
-        return HttpResponse(all_items+"\n\n"+response)
+        return HttpResponse(str(all_items+"\n\n"+response)
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
