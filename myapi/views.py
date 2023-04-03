@@ -31,12 +31,12 @@ def getsku(request):
                                     "name_fr": all_items[i][3], "desc": all_items[i][4], "desc_en": all_items[i][5],
                                     "desc_fr": all_items[i][6], "price": str(all_items[i][11]),
                                     "id": str(all_items[i][13])})
-            if (i != len(all_items) - 1):
+            if i != len(all_items) - 1:
                 response += ','
                 i += 1
 
         response += '],"orders":[0],"orders_loc":[0],"ordersServer":[]}'
-        return HttpResponse(response)
+        return HttpResponse(all_items)
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
@@ -270,7 +270,7 @@ def addform(request):
                 price = request.POST['price']
                 cat = request.POST['category']
                 link= f"https://reactive-cafe.com/media/{restoran}/{file.name}"
-                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_en}','{name_en}','{name_cat}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_cat}',{price},'{cat}',TRUE)"
+                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_cat,descr,descr_en,descr_cat,price,cat,isactive ) VALUES('{link}','{name}','{name_en}','{name_cat}','{desc}','{desc_en}','{desc_cat}',{price},'{cat}',TRUE)"
                 conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
                 # получение объекта курсора
                 cursor = conn.cursor()
@@ -292,7 +292,7 @@ def addform(request):
                 price = request.POST['price']
                 cat = request.POST['category']
 
-                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_fr,name_de,name_cat,descr,descr_en,descr_fr,descr_de,descr_cat,price,cat,isactive ) VALUES('','{name}','{name_en}','{name_en}','{name_en}','{name_cat}','{desc}','{desc_en}','{desc_en}','{desc_en}','{desc_cat}',{price},'{cat}',TRUE)"
+                sql = f"INSERT INTO sku_{restoran}(image,name,name_en,name_cat,descr,descr_en,descr_cat,price,cat,isactive ) VALUES('','{name}','{name_en}','{name_cat}','{desc}','{desc_en}','{desc_cat}',{price},'{cat}',TRUE)"
                 conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
                 # получение объекта курсора
                 cursor = conn.cursor()
