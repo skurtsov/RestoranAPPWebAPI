@@ -36,7 +36,7 @@ def getsku(request):
                 i += 1
 
         response += '],"orders":[0],"orders_loc":[0],"ordersServer":[]}'
-        return HttpResponse(all_items+response)
+        return HttpResponse(response)
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
