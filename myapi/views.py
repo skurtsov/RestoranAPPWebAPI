@@ -28,8 +28,8 @@ def getsku(request):
         response += '{"card_state":['
         for x in all_items:
             response += json.dumps({"image": all_items[i][0], "name": all_items[i][1], "name_en": all_items[i][2],
-                                    "name_fr": all_items[i][3], "desc": all_items[i][6], "desc_en": all_items[i][5],
-                                    "desc_fr": all_items[i][6], "price": str(all_items[i][11]),
+                                    "name_fr": all_items[i][3],"name_cat": all_items[i][5], "desc": all_items[i][6], "desc_en": all_items[i][5],
+                                    "desc_fr": all_items[i][6],"desc_cat": all_items[i][10], "price": str(all_items[i][11]),
                                     "id": str(all_items[i][13])})
             if (i != len(all_items) - 1):
                 response += ','
