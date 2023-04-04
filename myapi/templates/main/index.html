@@ -44,7 +44,7 @@ URI     : https://colorlib.com
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="img-fluid logoimg" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                        <a class="navbar-brand" href="index.html"><img src="{% static 'images/logo.png'%}'%}" class="img-fluid logoimg" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
@@ -62,8 +62,8 @@ URI     : https://colorlib.com
 
 
     <header class="bg-gradient" id="home">
-        <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
-            <source src="./images/bg.mp4" type="video/mp4">
+        <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg'%}">
+            <source src="{% static 'images/bg.mp4'%}" type="video/mp4">
         </video>
         <div class="container mt-my" data-aos="fade-down" data-aos-duration="3000">
             <h1>Estás  Invitado</h1>
@@ -89,7 +89,7 @@ URI     : https://colorlib.com
         <div class="container">
             <div class="row">
                 <div class="col-md-6" data-aos="fade-down">
-                    <img src="images/dualphone.png" alt="dual phone" class="dualphone img-fluid">
+                    <img src="{% static 'images/dualphone.png'%}'%}" alt="dual phone" class="dualphone img-fluid">
                 </div>
                 <div class="col-md-6 d-flex align-items-center" data-aos="fade-down" data-aos-duration="2000">
                     <div>
@@ -146,14 +146,14 @@ URI     : https://colorlib.com
                             <a href="#" class="btn btn-prm">Read more</a></div>
                     </div>
                     <div class="col-md-6 col-sm-12" data-aos="fade-down">
-                        <img src="images/5.png" alt="dual phone" class=" img-fluid">
+                        <img src="{% static 'images/5.png'%}" alt="dual phone" class=" img-fluid">
                     </div>
                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="strategy">
                   <div class="design-process-content">
                     <div class="col-md-6" data-aos="fade-down">
-                        <img src="images/stol.jpg" alt="dual phone" class=" img-fluid">
+                        <img src="{% static 'images/stol.jpg'%}" alt="dual phone" class=" img-fluid">
                     </div>
                     <div class="col-md-6 d-flex align-items-center" data-aos="fade-down">
                         <div>
@@ -168,7 +168,7 @@ URI     : https://colorlib.com
                 <div role="tabpanel" class="tab-pane" id="optimization">
                   <div class="design-process-content">
                       <div class="col-md-4" data-aos="fade-down">
-                          <img src="images/0.png" alt="dual phone" class="img-uzk img-fluid">
+                          <img src="{% static 'images/0.png'%}" alt="dual phone" class="img-uzk img-fluid">
                       </div>
                       <div class="col-md-4 d-flex align-items-center" data-aos="fade-down">
                           <div>
@@ -177,7 +177,7 @@ URI     : https://colorlib.com
                               </div>
                       </div>
                       <div class="col-md-4" data-aos="fade-down">
-                          <img src="images/2.png" alt="dual phone" class="img-uzk img-fluid">
+                          <img src="{% static 'images/2.png'%}" alt="dual phone" class="img-uzk img-fluid">
                       </div>
                      </div>
                 </div>
@@ -190,7 +190,7 @@ URI     : https://colorlib.com
                               </div>
                       </div>
                       <div class="col-md-6" data-aos="fade-down">
-                          <img src="images/vibr.png" alt="dual phone" class=" img-fluid">
+                          <img src="{% static 'images/vibr.png'%}" alt="dual phone" class=" img-fluid">
                       </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ URI     : https://colorlib.com
                               <a href="#" class="btn btn-prm">Read more</a></div>
                       </div>
                       <div class="col-md-6" data-aos="fade-down">
-                          <img src="images/review.png" alt="dual phone" class=" img-fluid">
+                          <img src="{% static 'images/review.png'%}" alt="dual phone" class=" img-fluid">
                       </div>
                 </div>
               </div>
@@ -226,7 +226,7 @@ URI     : https://colorlib.com
                     <a href="#" class="btn btn-prm">Read more</a></div>
             </div>
             <div class="marginimg col-md-6 " data-aos="fade-down">
-                <img src="images/5.png" alt="dual phone" class=" img-fluid">
+                <img src="{% static 'images/5.png'%}" alt="dual phone" class=" img-fluid">
             </div>
         </div>
 
@@ -246,7 +246,7 @@ URI     : https://colorlib.com
                     </div>
             </div>
             <div class="marginimg col-md-6" data-aos="fade-down">
-                <img src="images/stol.jpg" alt="dual phone" class=" img-fluid">
+                <img src="{% static 'images/stol.jpg'%}" alt="dual phone" class=" img-fluid">
             </div>
         </div>
 
@@ -265,10 +265,10 @@ URI     : https://colorlib.com
                     </div>
             </div>
             <div class="marginimg col-md-6" data-aos="fade-down">
-                <img src="images/0.png" alt="dual phone" class="img-uzk img-fluid">
+                <img src="{% static 'images/0.png'%}" alt="dual phone" class="img-uzk img-fluid">
             </div>
             <div class="col-md-6" data-aos="fade-down">
-                <img src="images/2.png" alt="dual phone" class="img-uzk img-fluid">
+                <img src="{% static 'images/2.png'%}" alt="dual phone" class="img-uzk img-fluid">
             </div>
         </div>
 
@@ -286,7 +286,7 @@ URI     : https://colorlib.com
                     </div>
             </div>
             <div class="marginimg col-md-6" data-aos="fade-down">
-                <img src="images/vibr.png" alt="dual phone" class=" img-fluid">
+                <img src="{% static 'images/vibr.png'%}" alt="dual phone" class=" img-fluid">
             </div>
         </div>
 
@@ -304,7 +304,7 @@ URI     : https://colorlib.com
                     <a href="#" class="btn btn-prm">Read more</a></div>
             </div>
             <div class="marginimg col-md-6" data-aos="fade-down">
-                <img src="images/review.png" alt="dual phone" class=" img-fluid">
+                <img src="{% static 'images/review.png'%}" alt="dual phone" class=" img-fluid">
             </div>
         </div>
 
@@ -320,11 +320,11 @@ URI     : https://colorlib.com
             </div>
 
             <div class="img-gallery owl-carousel owl-theme">
-                <img src="images/0.png" alt="image">
-                <img src="images/1.png" alt="image">
-                <img src="images/2.png" alt="image">
-                <img src="images/3.png" alt="image">
-                <img src="images/4.png" alt="image">
+                <img src="{% static 'images/0.png'%}" alt="image">
+                <img src="{% static 'images/1.png'%}" alt="image">
+                <img src="{% static 'images/2.png'%}" alt="image">
+                <img src="{% static 'images/3.png'%}" alt="image">
+                <img src="{% static 'images/4.png'%}" alt="image">
             </div>
 
         </div>
@@ -383,7 +383,7 @@ URI     : https://colorlib.com
                 <div class="my-4">
 
                     <a href="#four" class="btn btn-light"> Registra</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.skurtsov.Waiter" class="btn btn-light"><img src="images/playicon.png" alt="icon">Dsecarga Playstore</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.skurtsov.Waiter" class="btn btn-light"><img src="{% static 'images/playicon.png'%}" alt="icon">Dsecarga Playstore</a>
                 </div>
             </div>
         </div>
