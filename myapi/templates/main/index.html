@@ -16,7 +16,7 @@ URI     : https://colorlib.com
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Mobland - Mobile App Landing Page Template">
     <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
-
+    {% load static %}
     <!-- Font -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
@@ -27,9 +27,9 @@ URI     : https://colorlib.com
     <!-- Owl carousel -->
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
     <!-- Main css -->
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
       <!-- Custom css -->
-      <link href="./css/custom.css" rel="stylesheet">
+      <link href="{% static 'css/custom.css' %}" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
