@@ -23,7 +23,7 @@ from myapi.views import getsku, norder, getorders, deleteall, getuser, deleteid,
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/getsku/',getsku),
-    path('api/getsku/',getskutable),
+    path('api/getskutable/',getskutable),
     path('api/redactbyid/',redactbyid),
     path('api/norder/',norder),
     path('api/getorders/',getorders),
