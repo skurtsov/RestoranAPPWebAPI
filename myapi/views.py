@@ -70,8 +70,8 @@ def getskutable(request):
                 i += 1
 
         response += ']}'
-        y = json.loads(response)
-        return HttpResponse(y[0].name)
+        y = json.dumps(response)
+        return HttpResponse(y[0])
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
