@@ -69,7 +69,7 @@ def getskutable(request):
                 response += ','
                 i += 1
 
-        response += ']'
+        response += ']}'
         return HttpResponse(response)
 
         cursor.close()  # закрываем курсор
