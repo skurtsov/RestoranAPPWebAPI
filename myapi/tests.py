@@ -1,3 +1,12 @@
+from django.http import HttpResponse
+import psycopg2
+import json
+import hashlib
+from django.shortcuts import render
+from django.template import loader
+from .forms import ResumeForm
+import os
+
 restoran = "greek"
 # пытаемся подключиться к базе данных
 conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
