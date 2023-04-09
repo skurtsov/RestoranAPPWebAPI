@@ -24,10 +24,9 @@
 	</thead>
 	<tbody>
 	<!-- jinja2 Technique -->
-   {% for key, value in myjson.items %}
+   {% for person in myjson %}
         <tr>
-            <td>{{ key }}</td>
-            <td>{{ value }}</td>
+            <td>{{ person.name }}</td>
         </tr>
         {% endfor %}
 	</tbody>
