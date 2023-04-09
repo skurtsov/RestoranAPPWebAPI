@@ -17,22 +17,17 @@
 <table class="table table-dark table-striped">
 	<thead>
 	<tr>
-		<th>image</th>
 		<th>name</th>
-		<th>name_en</th>
-		<th>desc</th>
 
 	</tr>
 	</thead>
 	<tbody>
 	<!-- jinja2 Technique -->
-	{% if d %}
-	{% for i in d %}
+	{% if myjson %}
+	{% for i in myjson %}
 	<tr>
-		<td>{{i.image}}</td>
-		<td>{{i.name}}</td>
-		<td>{{i.name_en}}</td>
-		<td>{{i.desc}}</td>
+		<td>{{myjson[i]["name"]}}</td>
+
 	</tr>
 	{% endfor %}
 	{% endif %}
