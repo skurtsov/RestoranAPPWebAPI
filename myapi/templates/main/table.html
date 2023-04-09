@@ -25,7 +25,7 @@
 	<!-- jinja2 Technique -->
 	{% for i in myjson %}
 	<tr>
-		<td>{{{myjson[i]}}</td>
+		<td>{{{type(myjson)}}</td>
 	</tr>
 	{% endfor %}
 	</tbody>
