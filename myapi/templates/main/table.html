@@ -24,9 +24,10 @@
 	</thead>
 	<tbody>
 	<!-- jinja2 Technique -->
-   {% for person in myjson %}
+   {% for sku in myjson %}
         <tr>
-            <td>{{ person.name }}</td>
+			<td><img src="{{sku.image}}"></td>
+            <td>{{ sku.name }}</td>
         </tr>
         {% endfor %}
 	</tbody>
