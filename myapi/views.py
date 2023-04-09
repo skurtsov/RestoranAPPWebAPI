@@ -344,76 +344,80 @@ def addform(request):
 def redactbyid(request):
     restoran = request.GET.get('restoran')
     id = request.GET.get('id')
+    try:
+        # пытаемся подключиться к базе данных
+        conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+        # получение объекта курсора
+        cursor = conn.cursor()
+        # Получаем список всех пользователей
+        cursor.execute(f'SELECT * FROM sku_{restoran} WHERE id={id}' )
+        all_items = cursor.fetchall()
 
-    # пытаемся подключиться к базе данных
-    conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
-    # получение объекта курсора
-    cursor = conn.cursor()
-    # Получаем список всех пользователей
-    cursor.execute(f'SELECT * FROM sku_{restoran} WHERE id={id}')
-    all_items = cursor.fetchall()
 
-    cursor.close()  # закрываем курсор
-    conn.close()  # закрываем соединение
-    if request.method == 'POST':
-        restoran = request.GET.get('restoran')
-        form = ResumeForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = request.FILES.get('file')
-            if file != None:
-                name = request.POST['name']
-                if (os.path.exists(f"media/{restoran}") != True):
-                    os.makedirs(f"media/{restoran}")
-                filename = os.path.join(f'media/{restoran}', file.name)
-                with open(filename, 'wb') as f:
-                    f.write(file.read())
-                name = request.POST['name']
-                name_en = request.POST['name_en']
-                name_cat = request.POST['name_cat']
-                desc = request.POST['desc']
-                desc_en = request.POST['desc_en']
-                desc_cat = request.POST['desc_cat']
-                price = request.POST['price']
-                cat = request.POST['category']
-                link = f"https://reactive-cafe.com/media/{restoran}/{file.name}"
-                # sql = f"UPDATE sku_{restoran} SET image ='{link}' WHERE id={id}"
-                sql = f"UPDATE sku_{restoran} SET image ='{link}',name='{name}',name_en='{name_en}',name_cat='{name_cat}',descr='{desc}',descr_en='{desc_en}',descr_cat='{desc_cat}',price={price},cat='{cat}'  WHERE id={id}"
-                conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
-                # получение объекта курсора
-                cursor = conn.cursor()
-                # Получаем список всех пользователей
-                cursor.execute(sql)
-                conn.commit()
 
-                cursor.close()  # закрываем курсор
-                conn.close()  # закрываем соединение
-                return HttpResponse("Not None")
-            else:
-                name = request.POST['name']
-                name_en = request.POST['name_en']
-                name_cat = request.POST['name_cat']
-                desc = request.POST['desc']
-                desc_en = request.POST['desc_en']
-                desc_cat = request.POST['desc_cat']
-                price = request.POST['price']
-                cat = request.POST['category']
-                sql = f"UPDATE sku_{restoran} SET name='{name}',name_en='{name_en}',name_cat='{name_cat}',descr='{desc}',descr_en='{desc_en}',descr_cat='{desc_cat}',price={price},cat='{cat}'  WHERE id={id}"
-                conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
-                # получение объекта курсора
-                cursor = conn.cursor()
-                # Получаем список всех пользователей
-                cursor.execute(sql)
-                conn.commit()
 
-                cursor.close()  # закрываем курсор
-                conn.close()  # закрываем соединение
-                return HttpResponse("Changed")
-    else:
-        form = ResumeForm
-    return render(request, 'main/redactform.html',
-                  {'form': form, 'name': all_items[0][1], 'name_en': all_items[0][2], 'name_cat': all_items[0][5],
-                   'desc': all_items[0][3], 'desc_en': all_items[0][4], 'desc_cat': all_items[0][10],
-                   'price': all_items[0][11], 'category': all_items[0][12], })
+        cursor.close()  # закрываем курсор
+        conn.close()  # закрываем соединение
+        if request.method == 'POST':
+            restoran = request.GET.get('restoran')
+            form = ResumeForm(request.POST, request.FILES)
+            if form.is_valid():
+                file = request.FILES.get('file')
+                if file != None:
+                    name = request.POST['name']
+                    if (os.path.exists(f"media/{restoran}") != True):
+                        os.makedirs(f"media/{restoran}")
+                    filename = os.path.join(f'media/{restoran}', file.name)
+                    with open(filename, 'wb') as f:
+                        f.write(file.read())
+                    name = request.POST['name']
+                    name_en = request.POST['name_en']
+                    name_cat = request.POST['name_cat']
+                    desc = request.POST['desc']
+                    desc_en = request.POST['desc_en']
+                    desc_cat = request.POST['desc_cat']
+                    price = request.POST['price']
+                    cat = request.POST['category']
+                    link = f"https://reactive-cafe.com/media/{restoran}/{file.name}"
+                    #sql = f"UPDATE sku_{restoran} SET image ='{link}' WHERE id={id}"
+                    sql= f"UPDATE sku_{restoran} SET image ='{link}',name='{name}',name_en='{name_en}',name_cat='{name_cat}',descr='{desc}',descr_en='{desc_en}',descr_cat='{desc_cat}',price={price},cat='{cat}'  WHERE id={id}"
+                    conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+                    # получение объекта курсора
+                    cursor = conn.cursor()
+                    # Получаем список всех пользователей
+                    cursor.execute(sql)
+                    conn.commit()
+
+                    cursor.close()  # закрываем курсор
+                    conn.close()  # закрываем соединение
+                    return HttpResponse("Not None")
+                else:
+                    name = request.POST['name']
+                    name_en = request.POST['name_en']
+                    name_cat = request.POST['name_cat']
+                    desc = request.POST['desc']
+                    desc_en = request.POST['desc_en']
+                    desc_cat = request.POST['desc_cat']
+                    price = request.POST['price']
+                    cat = request.POST['category']
+                    sql = f"UPDATE sku_{restoran} SET name='{name}',name_en='{name_en}',name_cat='{name_cat}',descr='{desc}',descr_en='{desc_en}',descr_cat='{desc_cat}',price={price},cat='{cat}'  WHERE id={id}"
+                    conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+                    # получение объекта курсора
+                    cursor = conn.cursor()
+                    # Получаем список всех пользователей
+                    cursor.execute(sql)
+                    conn.commit()
+
+                    cursor.close()  # закрываем курсор
+                    conn.close()  # закрываем соединение
+                    return HttpResponse("Changed")
+        else:
+            form = ResumeForm
+        return render(request, 'main/redactform.html', {'form': form, 'name': all_items[0][1],'name_en': all_items[0][2],'name_cat':all_items[0][5],'desc': all_items[0][3],'desc_en': all_items[0][4],'desc_cat': all_items[0][10],'price': all_items[0][11],'category': all_items[0][12],})
+
+    except:
+        # в случае сбоя подключения будет выведено сообщение в STDOUT
+        return HttpResponse("Not working")
 
 
 def add(request):
