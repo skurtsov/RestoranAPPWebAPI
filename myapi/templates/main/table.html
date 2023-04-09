@@ -17,8 +17,13 @@
 <table class="table table-dark table-striped">
 	<thead>
 	<tr>
-		<th>key</th>
-		<th>value</th>
+		<th>image</th>
+		<th>nombre</th>
+		<th>nombre english</th>
+		<th>nombre catalan</th>
+		<th>price</th>
+		<th>id</th>
+
 
 	</tr>
 	</thead>
@@ -28,6 +33,11 @@
         <tr>
 			<td><img src="{{sku.image}}"></td>
             <td>{{ sku.name }}</td>
+			 <td>{{ sku.name_en }}</td>
+			 <td>{{ sku.name_cat }}</td>
+			 <td>{{ sku.price }}</td>
+			 <td>{{ sku.id }}</td>
+
         </tr>
         {% endfor %}
 	</tbody>
