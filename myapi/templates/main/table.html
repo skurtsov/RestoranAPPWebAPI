@@ -22,7 +22,7 @@
 		<th>nombre english</th>
 		<th>nombre catalan</th>
 		<th>price</th>
-		<th>id</th>
+		<th>redact</th>
 
 
 	</tr>
@@ -36,7 +36,7 @@
 			 <td>{{ sku.name_en }}</td>
 			 <td>{{ sku.name_cat }}</td>
 			 <td>{{ sku.price }}</td>
-			 <td><a href=""></ahref></td>
+			 <td><a target="_blank" href="https://reactive-cafe.com/api/redactbyid/?restoran={{restoran}}&id={{sku.id}}">redact</a></td>
 
         </tr>
         {% endfor %}
