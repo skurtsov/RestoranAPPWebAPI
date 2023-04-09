@@ -66,7 +66,7 @@ def getskutable(request):
                                     "desc_en": all_items[i][5],
                                     "desc_fr": all_items[i][6], "desc_cat": all_items[i][10],
                                     "price": str(all_items[i][11]),
-                                    "id": str(all_items[i][13])})
+                                    "id": str(all_items[i][14])})
             if (i != len(all_items) - 1):
                 response += ','
                 i += 1
