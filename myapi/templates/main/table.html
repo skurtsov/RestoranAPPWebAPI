@@ -22,10 +22,15 @@
 	</tr>
 	</thead>
 	<tbody>
+	<!-- jinja2 Technique -->
+	{% if myjson %}
+	{% for i in myjson %}
 	<tr>
-	Yes
-	</tr>
+		<td>{{myjson[i]["name"]}}</td>
 
+	</tr>
+	{% endfor %}
+	{% endif %}
 	</tbody>
 </table>
 </div>
