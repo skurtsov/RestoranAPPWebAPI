@@ -22,11 +22,12 @@
 	</tr>
 	</thead>
 	<tbody>
+	<!-- jinja2 Technique -->
+	{% for i in myjson %}
 	<tr>
-	<td>
-		{{myjson}}
-	</td>
+		<td>{{{myjson[i]}}</td>
 	</tr>
+	{% endfor %}
 	</tbody>
 </table>
 </div>
