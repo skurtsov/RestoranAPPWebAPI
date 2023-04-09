@@ -417,7 +417,7 @@ def redactbyid(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        return HttpResponse(f"UPDATE sku_{restoran} SET image ={link} WHERE id={id}")
+        return HttpResponse("Not working")
 
 
 def add(request):
