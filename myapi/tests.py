@@ -18,7 +18,7 @@ all_items = cursor.fetchall()
 i = 0
 response = ""
 # Формируем Жсон
-response += '{"card_state":['
+response += '['
 for x in all_items:
     response += json.dumps({"image": all_items[i][0], "name": all_items[i][1], "name_en": all_items[i][2],
                             "name_fr": all_items[i][3], "name_cat": all_items[i][5], "desc": all_items[i][6],
@@ -30,9 +30,9 @@ for x in all_items:
         response += ','
         i += 1
 
-response += ']}'
-y = json.dumps(response)
-print(y)
+response += ']'
+y = json.loads(response)
+print(y[0]["name"])
 
 cursor.close()  # закрываем курсор
 conn.close()  # закрываем соединение
