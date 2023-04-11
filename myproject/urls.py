@@ -35,6 +35,6 @@ urlpatterns = [
     path('api/newuser/', newuser),
     path('manager/add/', add),
     path("manager/addform/", addform, name="addform"),
-    path("manager/adddrink/", add_drink_form(), name="add_drink_form"),
+    path("manager/adddrink/", add_drink_form, name="add_drink_form"),
     path("invite/", website, name="website"),
               ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
