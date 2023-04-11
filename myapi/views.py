@@ -386,7 +386,7 @@ def add_drink_form(request):
                 conn.close()  # закрываем соединение
                 return HttpResponse(sql)
     else:
-        form = ResumeForm
+        form = DrinkForm
     return render(request, 'main/addform.html', {'form': form, 'test':'parapa'})
 def redactbyid(request):
     restoran = request.GET.get('restoran')
