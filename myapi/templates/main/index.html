@@ -10,11 +10,11 @@ URI     : https://colorlib.com
  -->
 
 <head>
-    <title>MobApp - App Landing Page Template</title>
+    <title>Reactive-cafe codigos QR</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Mobland - Mobile App Landing Page Template">
+    <meta name="description" content="Reactive cafe - smart codigos QR para los restorantes">
     <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
     {% load static %}
     <!-- Font -->
@@ -99,7 +99,7 @@ URI     : https://colorlib.com
                         Con Reactive Café, su restaurante será más moderno, rápido y conveniente para los clientes. Los clientes estarán satisfechos y volverán una y otra vez, y también recomendarán su establecimiento a sus amigos.
                       
                         </p>
-                        <a href="#" class="btn btn-prm">Read more</a></div>
+                        <a href="#process-tab" class="btn btn-prm">¿Cómo funciona?</a></div>
                 </div>
             </div>
 
@@ -114,7 +114,7 @@ URI     : https://colorlib.com
             <div class="col-xs-12">
               <!-- design process steps-->
               <!-- Nav tabs -->
-                <h1 class="tab-title">How does it works?</h1>
+                <h1 class="tab-title">¿Cómo funciona?</h1>
               <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
                 <li role="presentation" class="active"><a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><i class="fa fa-download" aria-hidden="true"></i>
                   <p>Registro</p>
@@ -140,10 +140,10 @@ URI     : https://colorlib.com
 
                     <div class="col-md-6 col-sm-12 d-flex align-items-center" data-aos="fade-down">
                         <div>
-                            <h2 class="que-title">1. Registro</h2>
+                            <h2 class="que-title">1. Registro i descarga</h2>
                             <p class="mb-4 p-que">Para empezar a utilizar la aplicación, debe instalarla en su teléfono y registrarse a través de la aplicación o aqui el sitio web. 
                                 <br><br>A continuación, se enviarán instrucciones a la dirección de correo electrónico facilitada. También tendrá que facilitar una foto del menú e información sobre el número de mesas y camareros. Esto permitirá digitalizar el menú.</p>
-                            <a href="#" class="btn btn-prm">Read more</a></div>
+                            <a href="#only-mobile" class="btn btn-prm">Regístrese</a></div>
                     </div>
                     <div class="col-md-6 col-sm-12" data-aos="fade-down">
                         <img src="{% static 'images/5.png'%}" alt="dual phone" class=" img-fluid">
@@ -200,7 +200,7 @@ URI     : https://colorlib.com
                           <div>
                               <h2 class="que-title">5. ¡Hurra!</h2>
                               <p class="mb-4 p-que">Ha elevado el nivel de servicio de su restaurante. Los clientes se quedarán contentos y volverán de nuevo, y recomendarán su establecimiento a sus amigos. Además, con un menú inteligente, puedes invitar a los clientes a dejar una reseña en Google Maps, lo que aumenta la valoración de tu restaurante y atrae aún más clientes.</p>
-                              <a href="#" class="btn btn-prm">Read more</a></div>
+                              <a href="#only-mobile" class="btn btn-prm">Regístrese</a></div>
                       </div>
                       <div class="col-md-6" data-aos="fade-down">
                           <img src="{% static 'images/review.png'%}" alt="dual phone" class=" img-fluid">
@@ -220,10 +220,10 @@ URI     : https://colorlib.com
             <h2 class="como-title">¿Como epiezar la prueba?</h2>
             <div class="col-md-6 col-sm-12 d-flex align-items-center" data-aos="fade-down">
                 <div>
-                    <h2 class="que-title">1. Registro</h2>
+                    <h2 class="que-title">1. Registro i descarga</h2>
                     <p class="mb-4 p-que">Para empezar a utilizar la aplicación, debe instalarla en su teléfono y registrarse a través de la aplicación o aqui el sitio web. 
                         <br><br>A continuación, se enviarán instrucciones a la dirección de correo electrónico facilitada. También tendrá que facilitar una foto del menú e información sobre el número de mesas y camareros. Esto permitirá digitalizar el menú.</p>
-                    <a href="#" class="btn btn-prm">Read more</a></div>
+                    <a href="#only-mobile" class="btn btn-prm">Regístrese</a></div>
             </div>
             <div class="marginimg col-md-6 " data-aos="fade-down">
                 <img src="{% static 'images/5.png'%}" alt="dual phone" class=" img-fluid">
@@ -316,7 +316,7 @@ URI     : https://colorlib.com
         <div class="container">
             <div class="section-title">
                 <small>GALLERY</small>
-                <h3 id="title-screenshots">App Screenshots</h3>
+                <h3 id="title-screenshots">App capturas</h3>
             </div>
 
             <div class="img-gallery owl-carousel owl-theme">
@@ -394,8 +394,9 @@ URI     : https://colorlib.com
     <section id="four" class="wrapper  special">
         <div class="one-title">
             <h1 class="tab-title">Registro</h1>
+            <h3 class="whatsup-sub">?Nececitas ayuda? <br> WhatsAPP: +34 612 222 062</h3>
         </div>
-        <form >
+        <form method="post" action="https://reactive-cafe.com/sendmail">
             <div class="myform">
             <div class="formrow">
                 <div class="formbl">
@@ -424,6 +425,7 @@ URI     : https://colorlib.com
 
         </form>
 
+
 </section>
     <!-- // end .section -->
     <footer class="my-5 text-center">
@@ -431,7 +433,15 @@ URI     : https://colorlib.com
         <p class="mb-2"><small>COPYRIGHT © 2023. ALL RIGHTS RESERVED. Reactive-cafe</a></small></p>
 
 
+
     </footer>
+<div id="snackcook">
+  <div id="cont" style="position: absolute; top: 20px; left:0px; right: 0px;">
+    <button onclick="aceptar()" style="background-color: lightgreen; padding: 10px; border: none;">ACEPTAR</button>
+  </div>
+Estamos utilizando cookies para brindarle la mejor experiencia en nuestro sitio web.</br>
+Puedes obtener más información sobre las cookies en la sección <a style="color: lightgrey;" href="https://reactive-cafe.com/static/politic-web.html">POLÍTICA DE PRIVACIDAD</a>
+</div>
 
     <!-- jQuery and Bootstrap -->
     <script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
