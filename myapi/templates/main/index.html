@@ -422,7 +422,7 @@ URI     : https://colorlib.com
                     </div>
                 </div>
                 <div class="subm">
-                    <div class="subm-button"> Registro</div>
+                    <div class="subm-button" onclick="formsend()"> Registro</div>
                 </div>
 
                 </form>
@@ -470,6 +470,7 @@ Puedes obtener más información sobre las cookies en la sección <a style="colo
             $.ajax({
                 type: "POST",
                 url: "https://makemesites.com/test.php",
+                mode:'no-cors',
                 data: "name=" + name + "&email=" + email + "&tel=" + tell +"&ciudad="  + ciudad,
                 success : function(text){
                     if (text == "success"){
@@ -479,7 +480,6 @@ Puedes obtener más información sobre las cookies en la sección <a style="colo
                 }
             })
         }
-        $('.subm-button').on('click',formsend())
       </script>
 </body>
 
