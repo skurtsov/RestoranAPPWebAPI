@@ -398,7 +398,7 @@ URI     : https://colorlib.com
                     <h1 class="tab-title">Registro</h1>
                     <h3 class="whatsup-sub">¿Nececitas ayuda? <br> WhatsAPP: +34 612 222 062</h3>
                 </div>
-                <form onsubmit="formsend()">
+                <form>
                     <div class="myform">
                     <div class="formrow">
                         <div class="formbl">
@@ -422,7 +422,7 @@ URI     : https://colorlib.com
                     </div>
                 </div>
                 <div class="subm">
-                    <input type="submit" value="Registro" class="subm-button">
+                    <div class="subm-button"> Registro</div>
                 </div>
 
                 </form>
@@ -479,6 +479,7 @@ Puedes obtener más información sobre las cookies en la sección <a style="colo
                 }
             })
         }
+        $('.subm-button').on('click',formsend())
       </script>
 </body>
 
