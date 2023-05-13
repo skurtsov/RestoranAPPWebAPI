@@ -486,10 +486,15 @@ def signin(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT * FROM users WHERE username='{uname}' AND password=MD5('{passw}')")
         all_items = cursor.fetchall()
-        return HttpResponse(all_items)
+        #return HttpResponse(all_items)
+        request.session['key'] = 'yesofcourse'
+        return redirect(profile)
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
         return HttpResponse('User not found')
+def profile(request):
+    value = request.session.get('key')
+    return  HttpResponse(value)
