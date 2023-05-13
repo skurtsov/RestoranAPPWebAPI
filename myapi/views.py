@@ -492,4 +492,4 @@ def signin(request):
 
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
-        print('Can`t establish connection to database')
+        return HttpResponse('User not found')
