@@ -487,7 +487,7 @@ def signin(request):
         cursor.execute(f"SELECT * FROM users WHERE username='{uname}' AND password=MD5('{passw}')")
         all_items = cursor.fetchall()
         #return HttpResponse(all_items[0][1])
-        request.session['key'] = all_items[0][1]
+        request.session['key'] = all_items[0][6]
         return redirect('https://reactive-cafe.com/profile')
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
