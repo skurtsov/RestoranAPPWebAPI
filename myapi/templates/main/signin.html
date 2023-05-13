@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>Авторизация</title>
-  {% csrf_token %}
+  {% csrf_token %} <!-- Вставка токена CSRF -->
 </head>
 <body>
   <h2>Авторизация</h2>
-  <form action="https://reactive-cafe.com/api/signin/" method="post">
+  <form action="/login" method="post">
+    {% csrf_token %} <!-- Вставка токена CSRF -->
     <label for="username">Имя пользователя:</label>
     <input type="text" id="username" name="username" required><br>
 
