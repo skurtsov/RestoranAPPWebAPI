@@ -3,18 +3,223 @@
 <head>
   <title>Авторизация</title>
   {% csrf_token %} <!-- Вставка токена CSRF -->
+  <style>
+    *, *:before, *:after {
+	box-sizing: border-box;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus, .form-control:focus, button:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #1d272f;
+}
+
+.wrapper {
+	height: 100%;
+	display: flex;
+}
+
+.login-wrapper {
+	margin: auto;
+	padding: 40px;
+	width: 420px;
+	background-color: #293742;
+	box-shadow: 0 4px 80px rgba(0,0,0,.25);
+	transition: height 0.1s;
+	color: #bfccd6;
+}
+
+#welcome-msg {
+	font-size: 17px;
+	line-height: 21px;
+	min-height: 51px;
+}
+
+.has-feedback.left-feedback .form-control {
+	padding-left: 45.5px;
+	padding-right: 0px;
+}
+.has-feedback.left-feedback .form-control-feedback {
+	left: 3px;
+}
+
+.form-control-feedback {
+	color: #aab2bd;
+}
+
+.auth-form-selector a {
+	color: #bfccd6;
+}
+
+input.form-control {
+	background-color: #212d36;
+	// background-color: rgba(0,0,0,.2);
+	color: #fff;
+	border-color: #1b262d;
+	// border-color: rgba(0,0,0,.3);
+
+	&::placeholder {
+		color: #6b7780;
+	}
+
+	&:focus {
+		border-color: #1372ad;
+	}
+
+	&[disabled] {
+		background-color: #394751;
+		border-color: #394751;
+
+		&::placeholder {
+			color: #78858f;
+		}
+	}
+}
+
+.has-error input.form-control {
+	border-color: #c83536;
+	box-shadow: none;
+}
+
+button.btn-auth {
+	background-color: #37444e;
+	border-color: #37444e;
+	box-shadow: 0 0 2px #1c272d;
+
+	background-color: rgba(255,255,255,.07);
+	border-color: rgba(255,255,255,.05);
+	box-shadow: 0 0 2px rgba(0,0,0,.8);
+
+	color: rgba(255,255,255,.9);
+
+	&:hover {
+		background-color: #37444e;
+		border-color: #37444e;
+
+		background-color: rgba(0,0,0,.15);
+		border-color: rgba(0,0,0,.15);
+
+		color: rgba(255,255,255,.8);
+	}
+
+	&:active{
+		background-color: rgba(0,0,0,.15);
+
+		color: rgba(255,255,255,.15);
+	}
+}
+  </style>
 </head>
 <body>
-  <h2>Авторизация</h2>
-  <form action="https://reactive-cafe.com/api/signin/" method="post">
+<div class="wrapper">
+	<div class="login-wrapper">
+		<div class="login-header"></div>
+		<div id="welcome-msg" class="text-center txt-block">Введите данные для входа в систему</div>
+		<div id="place-error" class="alert alert-danger alert-bold-border fade alert-dismissable txt-block hidden"><section></section></div>
+		<div id="place-success" class="alert alert-success alert-bold-border fade alert-dismissable txt-block hidden"><section></section></div>
+
+		<form action="https://reactive-cafe.com/api/signin/" method="post">
     {% csrf_token %} <!-- Вставка токена CSRF -->
-    <label for="username">Имя пользователя:</label>
-    <input type="text" id="uname" name="uname" required><br>
 
-    <label for="password">Пароль:</label>
-    <input type="password" id="passw" name="passw" required><br>
+			<div class="form-group">
 
-    <input type="submit" value="Войти">
-  </form>
+
+			<div class="form-group has-feedback left-feedback">
+				<input id="uname" name="auth_login" type="text" class="form-control input-lg" placeholder="Логин">
+				<span class="fa fa-user form-control-feedback"></span>
+			</div>
+
+			<div class="form-group has-feedback left-feedback">
+				<input name="passw" id="auth_password" type="password" class="form-control input-lg" placeholder="Пароль">
+				<span class="fa fa-unlock-alt form-control-feedback"></span>
+			</div>
+
+			<div class="form-group">
+				<button id="login_btn" type="submit" class="btn btn-auth btn-lg  btn-block">Войти</button>
+			</div>
+
+			<p class="auth-form-selector clearfix">
+				<a href="#recover_form" data-msg="Введите ваш логин" class="pull-left">Восстановить пароль</a>
+				<a href="#register_form" data-msg="Заполните форму для регистрации" class="pull-right register">Регистрация</a>
+			</p>
+		</form>
+
+		<form id="recover_form" role="form" action="/" method="post" class="hidden">
+			<div class="form-group has-feedback lg left-feedback no-label">
+				<input id="recover_login" name="recover_login" type="text" class="form-control input-lg rounded" placeholder="Введите логин" autofocus="">
+				<span class="fa fa-user form-control-feedback"></span>
+			</div>
+
+			<div class="form-group">
+				<button id="recoverform_button" type="submit" class="btn btn-primary btn-lg  btn-block">Восстановить пароль</button>
+			</div>
+
+			<p class="auth-form-selector text-center">
+				<a href="#login_form" data-msg="Введите данные для входа в систему">Авторизация</a>
+			</p>
+		</form>
+
+		<form id="register_form" role="form" action method="post" class="hidden">
+			<div class="form-group has-feedback lg left-feedback no-label">
+				<input id="register_login" name="auth_login" type="text" class="form-control input-lg rounded" placeholder="Логин" tabindex="1" autofocus="">
+				<span class="fa fa-user form-control-feedback"></span>
+			</div>
+
+			<div class="form-group has-feedback lg left-feedback no-label">
+				<input id="register_mail" name="auth_mail" type="text" class="form-control input-lg rounded" placeholder="Электронная почта" tabindex="1" autofocus="">
+				<span class="fa fa-envelope form-control-feedback"></span>
+			</div>
+
+			<div class="alert alert-success alert-bold-border fade in alert-dismissable hidden">
+				<section>
+					Нажимая на кнопку "Регистрация", вы принимаете условия <a href="/doc/oferta.pdf" class="oferta-link" target="_blank">Договора оферты</a>
+				</section>
+			</div>
+
+			<div class="form-group button">
+				<button id="register_btn" type="submit" class="btn btn-primary btn-lg  btn-block" tabindex="9">Регистрация</button>
+			</div>
+
+			<p class="auth-form-selector clearfix">
+				<a href="#recover_form" data-msg="Введите ваш логин" class="pull-left">Восстановить пароль</a>
+				<a href="#login_form" data-msg="Введите данные для входа в систему" class="pull-right">Авторизация</a>
+			</p>
+		</form>
+
+		<form id="authcode_form" action method="post" class="hidden">
+			<div class="form-group has-feedback lg left-feedback no-label">
+				<input type="text" class="form-control input-lg rounded" name="auth_code" id="auth_code" value="" placeholder="Введите код">
+				<span class="fa fa-key form-control-feedback"></span>
+			</div>
+
+			<div class="form-group has-feedback lg left-feedback no-label auth-hidden hidden">
+				<input type="password" class="form-control input-lg rounded smart-input" id="auth_password1" name="auth_password1" placeholder="Введите пароль">
+				<span class="fa fa-unlock-alt form-control-feedback"></span>
+			</div>
+
+			<div class="form-group has-feedback lg left-feedback no-label auth-hidden hidden">
+				<input type="password" class="form-control input-lg rounded smart-input" id="auth_password2" name="auth_password2" placeholder="Повторите пароль">
+				<span class="fa fa-unlock-alt form-control-feedback"></span>
+			</div>
+
+			<div class="form-group">
+				<button id="authcodeform_button" type="submit" class="btn btn-primary btn-lg btn-block">Сохранить пароль</button>
+			</div>
+
+			<p class="auth-form-selector text-center">
+				<a href="#login_form" data-msg="Введите данные для входа в систему">Авторизация</a>
+			</p>
+		</form>
+	</div>
+</div>
 </body>
 </html>
