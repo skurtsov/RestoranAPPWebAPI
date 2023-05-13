@@ -126,8 +126,8 @@ button.btn-auth {
 		<div id="welcome-msg" class="text-center txt-block">Введите данные для входа в систему</div>
 		<div id="place-error" class="alert alert-danger alert-bold-border fade alert-dismissable txt-block hidden"><section></section></div>
 		<div id="place-success" class="alert alert-success alert-bold-border fade alert-dismissable txt-block hidden"><section></section></div>
+		<form id="login_form" role="form" action="https://reactive-cafe.com/api/signin/" method="post" class="">
 
-		<form action="https://reactive-cafe.com/api/signin/" method="post">
     {% csrf_token %} <!-- Вставка токена CSRF -->
 
 			<div class="form-group">
@@ -151,74 +151,7 @@ button.btn-auth {
 				<a href="#recover_form" data-msg="Введите ваш логин" class="pull-left">Восстановить пароль</a>
 				<a href="#register_form" data-msg="Заполните форму для регистрации" class="pull-right register">Регистрация</a>
 			</p>
-		</form>
-
-		<form id="recover_form" role="form" action="/" method="post" class="hidden">
-			<div class="form-group has-feedback lg left-feedback no-label">
-				<input id="recover_login" name="recover_login" type="text" class="form-control input-lg rounded" placeholder="Введите логин" autofocus="">
-				<span class="fa fa-user form-control-feedback"></span>
-			</div>
-
-			<div class="form-group">
-				<button id="recoverform_button" type="submit" class="btn btn-primary btn-lg  btn-block">Восстановить пароль</button>
-			</div>
-
-			<p class="auth-form-selector text-center">
-				<a href="#login_form" data-msg="Введите данные для входа в систему">Авторизация</a>
-			</p>
-		</form>
-
-		<form id="register_form" role="form" action method="post" class="hidden">
-			<div class="form-group has-feedback lg left-feedback no-label">
-				<input id="register_login" name="auth_login" type="text" class="form-control input-lg rounded" placeholder="Логин" tabindex="1" autofocus="">
-				<span class="fa fa-user form-control-feedback"></span>
-			</div>
-
-			<div class="form-group has-feedback lg left-feedback no-label">
-				<input id="register_mail" name="auth_mail" type="text" class="form-control input-lg rounded" placeholder="Электронная почта" tabindex="1" autofocus="">
-				<span class="fa fa-envelope form-control-feedback"></span>
-			</div>
-
-			<div class="alert alert-success alert-bold-border fade in alert-dismissable hidden">
-				<section>
-					Нажимая на кнопку "Регистрация", вы принимаете условия <a href="/doc/oferta.pdf" class="oferta-link" target="_blank">Договора оферты</a>
-				</section>
-			</div>
-
-			<div class="form-group button">
-				<button id="register_btn" type="submit" class="btn btn-primary btn-lg  btn-block" tabindex="9">Регистрация</button>
-			</div>
-
-			<p class="auth-form-selector clearfix">
-				<a href="#recover_form" data-msg="Введите ваш логин" class="pull-left">Восстановить пароль</a>
-				<a href="#login_form" data-msg="Введите данные для входа в систему" class="pull-right">Авторизация</a>
-			</p>
-		</form>
-
-		<form id="authcode_form" action method="post" class="hidden">
-			<div class="form-group has-feedback lg left-feedback no-label">
-				<input type="text" class="form-control input-lg rounded" name="auth_code" id="auth_code" value="" placeholder="Введите код">
-				<span class="fa fa-key form-control-feedback"></span>
-			</div>
-
-			<div class="form-group has-feedback lg left-feedback no-label auth-hidden hidden">
-				<input type="password" class="form-control input-lg rounded smart-input" id="auth_password1" name="auth_password1" placeholder="Введите пароль">
-				<span class="fa fa-unlock-alt form-control-feedback"></span>
-			</div>
-
-			<div class="form-group has-feedback lg left-feedback no-label auth-hidden hidden">
-				<input type="password" class="form-control input-lg rounded smart-input" id="auth_password2" name="auth_password2" placeholder="Повторите пароль">
-				<span class="fa fa-unlock-alt form-control-feedback"></span>
-			</div>
-
-			<div class="form-group">
-				<button id="authcodeform_button" type="submit" class="btn btn-primary btn-lg btn-block">Сохранить пароль</button>
-			</div>
-
-			<p class="auth-form-selector text-center">
-				<a href="#login_form" data-msg="Введите данные для входа в систему">Авторизация</a>
-			</p>
-		</form>
+		 </form>
 	</div>
 </div>
 </body>
