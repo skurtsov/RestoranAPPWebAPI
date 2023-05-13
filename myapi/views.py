@@ -488,7 +488,7 @@ def signin(request):
         all_items = cursor.fetchall()
         #return HttpResponse(all_items)
         request.session['key'] = 'yesofcourse'
-        return redirect(profile)
+        return redirect('https://reactive-cafe.com/profile')
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
