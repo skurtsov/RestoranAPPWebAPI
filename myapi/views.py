@@ -484,7 +484,7 @@ def signin(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute(f'SELECT * FROM users WHERE username='{uname}' AND password=MD5('{passw}')')
+        cursor.execute(f"SELECT * FROM users WHERE username='{uname}' AND password=MD5('{passw}')")
         all_items = cursor.fetchall()
         return HttpResponse(all_items)
         cursor.close()  # закрываем курсор
