@@ -486,9 +486,9 @@ def signin(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT * FROM users WHERE username='{uname}' AND password=MD5('{passw}')")
         all_items = cursor.fetchall()
-        #return HttpResponse(all_items)
+        return HttpResponse(all_items[0]['token'])
         request.session['key'] = 'yesofcourse'
-        return redirect('https://reactive-cafe.com/profile')
+        #return redirect('https://reactive-cafe.com/profile')
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
