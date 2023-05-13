@@ -472,3 +472,24 @@ def add(request):
     return  HttpResponse(name)
 def website(request):
     return render(request, 'main/index.html')
+def signinform(request):
+    return render(request, 'main/signin.html')
+#######################
+def signin(request):
+    uname = request.POST.get('uname')
+    passw = hashlib.md5(request.POST.get('passw'))
+    try:
+        # пытаемся подключиться к базе данных
+        conn = psycopg2.connect(dbname='restoran', user='myuser', password='S53em4e10', host='localhost')
+        # получение объекта курсора
+        cursor = conn.cursor()
+        # Получаем список всех пользователей
+        cursor.execute(f'SELECT * FROM users WHERE username={uname} AND password={passw}')
+        all_items = cursor.fetchall()
+        return HttpResponse(all_items)
+        cursor.close()  # закрываем курсор
+        conn.close()  # закрываем соединение
+
+    except:
+        # в случае сбоя подключения будет выведено сообщение в STDOUT
+        print('Can`t establish connection to database')
