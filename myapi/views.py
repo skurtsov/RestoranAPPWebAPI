@@ -495,5 +495,5 @@ def signinform(request):
 #         print('Can`t establish connection to database')
 def signin(request):
     uname = request.POST.get('uname')
-    passw = hashlib.md5(request.POST.get('passw'))
+    passw = hashlib.md5(encode(request.POST.get('passw')))
     return HttpResponse(str(uname)+str(passw))
