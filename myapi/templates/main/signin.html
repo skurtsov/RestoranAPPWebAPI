@@ -2,19 +2,143 @@
 <html>
 <head>
   <title>Авторизация</title>
-  {% csrf_token %} <!-- Вставка токена CSRF -->
+ {% csrf_token %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/regular.min.css" integrity="sha512-WidMaWaNmZqjk3gDE6KBFCoDpBz9stTsTZZTeocfq/eDNkLfpakEd7qR0bPejvy/x0iT0dvzIq4IirnBtVer5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/502b157970.js" crossorigin="anonymous"></script>
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+#body {
+    /*background-color: black;*/
+}
+#uname {
+    height: 40px;
+    width: 80%;
+    background-color: #111211;
+    display: block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+#passw {
+    height: 40px;
+    width: 80%;
+    background-color: #111211;
+    font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+#submit{
+    width: 80%;
+    background-color: #616b66;
+    font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.flex-container {
+    display: flex;
+    justify-content:center;
+    height: 100%;
+    width: 100%;
+    background-color: #111211;
+    }
+.flex-container-1 {
+   display: flex;
+   flex-direction:column;
+   width: 350px;
+   height: 260px; 
+   position: fixed;
+   top: 30%;
+   margin: 10px;
+   padding: 10px;
+   background-color: #2f3330;
+   border-radius: 0.5rem;
+
+     }
+.flex-item {
+    display: flex;
+    justify-content:center;
+    padding: 10px;
+
+}
+.item-1 {
+    height: 47.5px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: #bdbdbd;
+   
+}
+.item-3 {
+    height: 40px;
+    
+}
+.item-4 {
+    height: 40px;
+}
+input[type="text"] {
+  text-indent: 35px;
+}
+input[type="password"] {
+  text-indent: 35px;
+}
+input::placeholder {
+    position: absolute;
+    top: 11px;
+}
+
+#fa-user {
+  position: absolute;
+  left:65px;
+  margin-top: 12px;
+}
+#fa-lock {
+  position: absolute;
+  left:65px;
+  margin-top: 12px;
+
+}
+
+  </style>
+
 </head>
-<body>
-  <h2>Авторизация</h2>
+<body id="body" class="flex-container">
+  <div class="flex-container-1">
+  <h2 class="flex-item item-1">Авторизация</h2>
   <form action="https://reactive-cafe.com/api/signin/" method="post">
-    {% csrf_token %} <!-- Вставка токена CSRF -->
-    <label for="username">Имя пользователя:</label>
-    <input type="text" id="uname" name="username" required><br>
+    {% csrf_token %}
+    
+    <div class="flex-item item-2">
+    <i id="fa-user" class="fa-solid fa-user" style="color: #bbc0c9;"></i>
+    <input type="text" placeholder="Имя пользователя:" id="uname" name="username" required><br>
+    </div>
 
-    <label for="password">Пароль:</label>
-    <input type="password" id="passw" name="password" required><br>
+    <div class="flex-item item-3">
+    <i id="fa-lock" class="fa-solid fa-lock" style="color: #bbc0c9;"></i>
+    <input type="password" placeholder="Пароль:"  id="passw" name="password" required><br>
+    </div>
 
-    <input type="submit" value="Войти">
+    <div class="flex-item item-4"><input type="submit" id="submit" value="Войти"></div>
+    
   </form>
+  </div>
 </body>
 </html>
