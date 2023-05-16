@@ -21,7 +21,7 @@ from myapi.views import getsku, norder, getorders, deleteall, getuser, deleteid,
     addform, add,website,redactbyid,getskutable,add_drink_form,signin,signinform,profile
 
 urlpatterns = [
-    path("/", website, name="website"),
+    path("", website, name="website"),
     path('admin/', admin.site.urls),
     path('api/getsku/',getsku),
     path('api/getskutable/',getskutable),
