@@ -21,7 +21,7 @@ def getsku(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute('SELECT * FROM sku_' + restoran+' ORDER BY id')
+        cursor.execute('SELECT * FROM sku_' + restoran+'WHERE isactive=1 ORDER BY id')
         all_items = cursor.fetchall()
         i = 0
         response = ""
