@@ -10,5 +10,5 @@ import os
 
 # Create your views here.
 # visitor menu
-def testadmin():
+def testadmin(request):
     return HttpResponse("Adminka works")

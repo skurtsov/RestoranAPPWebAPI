@@ -18,7 +18,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from myapi.views import getsku, norder, getorders, deleteall, getuser, deleteid, redactid, newuser, getordersweb, \
-    addform, add,website,redactbyid,getskutable,add_drink_form,signin,signinform,profile,testadmin
+    addform, add,website,redactbyid,getskutable,add_drink_form,signin,signinform,profile
+from  myapi.adminka import testadmin
 urlpatterns = [
     path("", website, name="website"),
     path('admin/', admin.site.urls),
