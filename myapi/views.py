@@ -513,3 +513,6 @@ def profile(request):
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
         return HttpResponse('User not found')
+    #Admin panel
+def testadmin():
+    return HttpResponse("Adminka works")
