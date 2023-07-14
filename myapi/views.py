@@ -503,7 +503,7 @@ def profile(request):
         # получение объекта курсора
         cursor = conn.cursor()
         # Получаем список всех пользователей
-        cursor.execute(f"SELECT * FROM users WHERE token='{token}'")
+        cursor.execute(f"SELECT restoran FROM users WHERE token='{token}'")
         user_data = cursor.fetchall()
         return HttpResponse(user_data)
 
