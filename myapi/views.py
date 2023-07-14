@@ -505,8 +505,8 @@ def profile(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT restoran FROM users WHERE token='{token}'")
         user_data = cursor.fetchall()
-        return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
-
+       #return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
+         return HttpResponse(vars(user_data))
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
