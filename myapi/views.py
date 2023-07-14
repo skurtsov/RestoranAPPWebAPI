@@ -505,7 +505,7 @@ def profile(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT * FROM users WHERE token='{token}'")
         user_data = cursor.fetchall()
-        return HttpResponse(user_data[0])
+        return HttpResponse('ok')
 
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
