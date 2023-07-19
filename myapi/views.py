@@ -505,7 +505,7 @@ def profile(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT restoran FROM users WHERE token='{token}'")
         user_data = cursor.fetchall()
-        return redirect('https://reactive-cafe.com/profile?restoran='+user_data)
+        return redirect('https://reactive-cafe.com/api/getskutable/?restoran='+user_data)
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
