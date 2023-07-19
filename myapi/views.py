@@ -10,6 +10,7 @@ import os
 
 # Create your views here.
 # visitor menu
+from .tests import str
 
 
 def getsku(request):
@@ -508,9 +509,9 @@ def profile(request):
        #return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
         user_data = cursor.fetchall()
         # return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
-        str = str(user_data)
-        reqstr= str[3:len(str) - 4]
-        return HttpResponse(reqstr)
+        mystr = str(user_data)
+#        reqstr= mystr[3:len(mystr) - 4]
+        return HttpResponse(mystr[0])
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
