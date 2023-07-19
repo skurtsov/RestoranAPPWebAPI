@@ -508,10 +508,9 @@ def profile(request):
         user_data = cursor.fetchall()
        #return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
         user_data = cursor.fetchall()
-        # return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
         mystr = str(user_data)
-#        reqstr= mystr[3:len(mystr) - 4]
-        return HttpResponse(mystr[0])
+#       reqstr= mystr[3:len(mystr) - 4]
+        return HttpResponse('ok')
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
