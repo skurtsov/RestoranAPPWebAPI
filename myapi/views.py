@@ -10,7 +10,6 @@ import os
 
 # Create your views here.
 # visitor menu
-from .tests import str
 
 
 def getsku(request):
@@ -506,13 +505,10 @@ def profile(request):
         # Получаем список всех пользователей
         cursor.execute(f"SELECT restoran FROM users WHERE token='{token}'")
         user_data = cursor.fetchall()
-       #return HttpResponse(f'SELECT * FROM sku_{user_data} ORDER BY id')
-        user_data = cursor.fetchall()
-        mystr = str(user_data)
-#       reqstr= mystr[3:len(mystr) - 4]
+        return redirect('https://reactive-cafe.com/profile?restoran='+user_data)
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
-        return HttpResponse('ok')
+
     except:
         # в случае сбоя подключения будет выведено сообщение в STDOUT
         return HttpResponse('User not found')
