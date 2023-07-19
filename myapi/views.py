@@ -488,7 +488,8 @@ def signin(request):
         all_items = cursor.fetchall()
         #return HttpResponse(all_items[0][1])
         request.session['key'] = all_items[0][6]
-        return redirect('https://reactive-cafe.com/api/getskutable/?restoran=greek')
+        return HttpResponse(all_items[0])
+        #return redirect('https://reactive-cafe.com/api/getskutable/?restoran=greek')
         cursor.close()  # закрываем курсор
         conn.close()  # закрываем соединение
 
